@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="FireStoreDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="mailIdTextView" destination="BZ9-6Y-Xpl" id="6on-rB-Do0"/>
+                <outlet property="passwordTextView" destination="zSW-HU-z61" id="a5W-MM-zra"/>
+                <outlet property="userNameTextField" destination="GGz-7M-WCx" id="6P3-GK-XNW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PMz-zf-9Pt">
+                    <rect key="frame" x="30" y="352" width="354" height="192"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZ9-6Y-Xpl">
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GGz-7M-WCx">
+                            <rect key="frame" x="0.0" y="54" width="354" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSW-HU-z61">
+                            <rect key="frame" x="0.0" y="108" width="354" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5M-2Z-iKW">
+                            <rect key="frame" x="0.0" y="162" width="354" height="30"/>
+                            <state key="normal" title="SIGNUP"/>
+                            <connections>
+                                <action selector="signupButtonPressed:" destination="-1" eventType="touchUpInside" id="e2e-uV-QUf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="GGz-7M-WCx" firstAttribute="width" secondItem="PMz-zf-9Pt" secondAttribute="width" id="07V-NY-FcO"/>
+                        <constraint firstItem="BZ9-6Y-Xpl" firstAttribute="width" secondItem="PMz-zf-9Pt" secondAttribute="width" id="UgF-Lb-8Ny"/>
+                        <constraint firstItem="t5M-2Z-iKW" firstAttribute="width" secondItem="PMz-zf-9Pt" secondAttribute="width" id="hf5-bv-WuL"/>
+                        <constraint firstItem="zSW-HU-z61" firstAttribute="width" secondItem="PMz-zf-9Pt" secondAttribute="width" id="kfb-Wm-Yeh"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PMz-zf-9Pt" secondAttribute="trailing" constant="30" id="9oe-e9-p6P"/>
+                <constraint firstItem="PMz-zf-9Pt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="V3w-3s-iu3"/>
+                <constraint firstItem="PMz-zf-9Pt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gOf-MC-9bZ"/>
+                <constraint firstItem="PMz-zf-9Pt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zPP-1D-KtD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="gOf-MC-9bZ"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="139" y="108"/>
+        </view>
+    </objects>
+</document>

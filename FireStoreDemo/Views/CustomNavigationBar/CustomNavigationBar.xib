@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavigationBar" customModule="FireStoreDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="8sZ-6r-bio"/>
+                <outlet property="labelView" destination="GHX-JU-bUt" id="3Lc-Zx-y4P"/>
+                <outlet property="rightButton" destination="vHD-ij-GPP" id="vky-xO-Y3C"/>
+                <outlet property="searchBackgroundView" destination="4bI-4D-xjf" id="k63-dZ-poh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="861" height="264"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHX-JU-bUt">
+                    <rect key="frame" x="20" y="54" width="61.5" height="31.5"/>
+                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="27"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="vHD-ij-GPP">
+                    <rect key="frame" x="821" y="60" width="20" height="20"/>
+                    <color key="tintColor" red="0.12981185319999999" green="0.2780358195" blue="0.83066958189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="ER9-LU-WIO"/>
+                        <constraint firstAttribute="width" constant="20" id="hSG-eQ-L0D"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bI-4D-xjf">
+                    <rect key="frame" x="20" y="105.5" width="821" height="50"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="zjw-vz-B7k">
+                            <rect key="frame" x="20" y="15" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="BFy-sK-QuJ"/>
+                                <constraint firstAttribute="width" constant="20" id="m7O-Oz-slS"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6W-nt-pyt">
+                            <rect key="frame" x="50" y="16" width="761" height="18.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.1438911259" green="0.13834527129999999" blue="0.193652302" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1182475016" green="0.1081889048" blue="0.15004941820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Cgk-MZ-d2H"/>
+                        <constraint firstItem="zjw-vz-B7k" firstAttribute="centerY" secondItem="4bI-4D-xjf" secondAttribute="centerY" id="DsR-pY-D8p"/>
+                        <constraint firstItem="c6W-nt-pyt" firstAttribute="leading" secondItem="zjw-vz-B7k" secondAttribute="trailing" constant="10" id="JOg-ZM-cgg"/>
+                        <constraint firstItem="zjw-vz-B7k" firstAttribute="leading" secondItem="4bI-4D-xjf" secondAttribute="leading" constant="20" id="MMO-GW-R9G"/>
+                        <constraint firstItem="c6W-nt-pyt" firstAttribute="centerY" secondItem="4bI-4D-xjf" secondAttribute="centerY" id="oSC-16-DC3"/>
+                        <constraint firstAttribute="trailing" secondItem="c6W-nt-pyt" secondAttribute="trailing" constant="10" id="vHp-P5-bSK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.1438911259" green="0.13834527129999999" blue="0.193652302" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vHD-ij-GPP" secondAttribute="trailing" constant="20" id="199-77-K44"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4bI-4D-xjf" secondAttribute="trailing" constant="20" id="OTu-PP-un9"/>
+                <constraint firstItem="GHX-JU-bUt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="SbU-DB-K7F"/>
+                <constraint firstItem="4bI-4D-xjf" firstAttribute="top" secondItem="GHX-JU-bUt" secondAttribute="bottom" constant="20" id="Tqk-Db-TGy"/>
+                <constraint firstItem="vHD-ij-GPP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="Xm8-Sv-QKA"/>
+                <constraint firstItem="4bI-4D-xjf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="adk-8V-Npy"/>
+                <constraint firstItem="GHX-JU-bUt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="zHe-L4-w82"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-557.24637681159425" y="-147.99107142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="filter" width="512" height="512"/>
+        <image name="search" width="50" height="50"/>
+    </resources>
+</document>
