@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
             if error == nil {
                 print("Signing in success")
                 UserData.shared.userName = response?.user.displayName
-                self?.saveUserAndDismissViewController(userId: response?.user.uid)
+                self?.saveUserAndDismissViewController(userId: response?.user.uid, userName: response?.user.displayName)
                 
                 
 //                self?.reference?.addDocument(data: ["first": "gokul",
@@ -97,10 +97,10 @@ class LoginViewController: UIViewController {
         self.present(signupVC, animated: true, completion: nil)
     }
     
-    private func saveUserAndDismissViewController(userId: String?) {
+    private func saveUserAndDismissViewController(userId: String?, userName: String?) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(userId, forKey: LoginViewController.userIdKey)
-        userDefaults.set(UserData.shared.userName, forKey: LoginViewController.userName)
+        userDefaults.set(userName, forKey: LoginViewController.userName)
         delegate?.LoginViewControllerUserLoginSuccess()
         self.dismiss(animated: true, completion: nil)
     }
@@ -108,8 +108,8 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: SignUpViewControllerDelegate {
-    func signUpViewController(userCreated withId: String?) {
+    func signUpViewController(userCreated withId: String?, userName: String?) {
         print("SignUp success")
-        self.saveUserAndDismissViewController(userId: withId)
+        self.saveUserAndDismissViewController(userId: withId, userName: userName)
     }
 }

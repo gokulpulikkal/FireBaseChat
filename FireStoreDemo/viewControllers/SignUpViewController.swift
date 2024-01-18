@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 protocol SignUpViewControllerDelegate: NSObjectProtocol {
-    func signUpViewController(userCreated withId: String?)
+    func signUpViewController(userCreated withId: String?, userName: String?)
 }
 
 class SignUpViewController: UIViewController {
@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
             if error == nil {
                 self.addUserToFireStoreDatabase(userId: userResult?.user.uid, userName: self.userNameTextField.text)
                 self.dismiss(animated: true) {
-                    self.delegate?.signUpViewController(userCreated: userResult?.user.uid)
+                    self.delegate?.signUpViewController(userCreated: userResult?.user.uid, userName: self.userNameTextField.text)
                 }
             }
         }

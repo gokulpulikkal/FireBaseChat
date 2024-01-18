@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BBE02D52B58F3CD00C2E5C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */; };
 		4BE5EEC92B57A22200C1EE52 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE5EEC82B57A22200C1EE52 /* FirebaseAnalytics */; };
 		4BE5EECB2B57A22200C1EE52 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE5EECA2B57A22200C1EE52 /* FirebaseAnalyticsOnDeviceConversion */; };
 		4BE5EECD2B57A22200C1EE52 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE5EECC2B57A22200C1EE52 /* FirebaseAnalyticsSwift */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55203D9924BA2BD8009FAA8D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		55203D9A24BA2BD8009FAA8D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		5522B9722471301B00D4A354 /* FireStoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireStoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				5522B97E2471301E00D4A354 /* Assets.xcassets */,
 				5522B9802471301E00D4A354 /* LaunchScreen.storyboard */,
 				5522B9832471301E00D4A354 /* Info.plist */,
+				4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */,
 				556BB27B24A8AE5100B26325 /* FireStoreDemo.xcdatamodeld */,
 			);
 			path = FireStoreDemo;
@@ -333,6 +336,7 @@
 				5522B9822471301E00D4A354 /* LaunchScreen.storyboard in Resources */,
 				5522B97F2471301E00D4A354 /* Assets.xcassets in Resources */,
 				5522B99224713F6700D4A354 /* SignUpViewController.xib in Resources */,
+				4BBE02D52B58F3CD00C2E5C5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
