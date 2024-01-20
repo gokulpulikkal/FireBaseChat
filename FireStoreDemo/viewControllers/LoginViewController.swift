@@ -13,7 +13,7 @@ protocol LoginViewControllerDelegate: NSObjectProtocol {
     func LoginViewControllerUserLoginSuccess()
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     static let userIdKey = "userId"
     static let userName = "userName"

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BBE02D52B58F3CD00C2E5C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */; };
+		4BC666AF2B5B7C5900C5E619 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */; };
 		4BE5EEC92B57A22200C1EE52 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE5EEC82B57A22200C1EE52 /* FirebaseAnalytics */; };
 		4BE5EECB2B57A22200C1EE52 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE5EECA2B57A22200C1EE52 /* FirebaseAnalyticsOnDeviceConversion */; };
 		4BE5EECD2B57A22200C1EE52 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE5EECC2B57A22200C1EE52 /* FirebaseAnalyticsSwift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		55203D9924BA2BD8009FAA8D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		55203D9A24BA2BD8009FAA8D /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		5522B9722471301B00D4A354 /* FireStoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireStoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 				55203D9A24BA2BD8009FAA8D /* LoginViewController.xib */,
 				55C1149924D70EC000E39D94 /* ListingViewController.swift */,
 				55730F8324DE7EE700DD36FF /* ChatViewController.swift */,
+				4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				55CDF1A624D9C22F00409326 /* NewFriendTableViewCell.swift in Sources */,
 				55E271BA24E43DAF00AC9E9E /* ChatCell.swift in Sources */,
 				5573ECEC2586751900EC074E /* CustomNavigationBar.swift in Sources */,
+				4BC666AF2B5B7C5900C5E619 /* BaseViewController.swift in Sources */,
 				556E58C7247D5CD400246DDE /* HomeViewController.swift in Sources */,
 				55E271B824E437E100AC9E9E /* BaseChatModel.swift in Sources */,
 				556BB27D24A8AE5100B26325 /* FireStoreDemo.xcdatamodeld in Sources */,

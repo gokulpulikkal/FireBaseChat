@@ -9,7 +9,7 @@
 import UIKit
 import TinyConstraints
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
     let viewModal: HomeViewModel = HomeViewModel()
     let tableView = UITableView()

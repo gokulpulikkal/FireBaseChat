@@ -14,7 +14,7 @@ protocol SignUpViewControllerDelegate: NSObjectProtocol {
     func signUpViewController(userCreated withId: String?, userName: String?)
 }
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
     
     @IBOutlet weak var mailIdTextView: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ListingViewController: UIViewController {
+class ListingViewController: BaseViewController {
     
     private let db = Firestore.firestore()
     var databaseListener: ListenerRegistration?

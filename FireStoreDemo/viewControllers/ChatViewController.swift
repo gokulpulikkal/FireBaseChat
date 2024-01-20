@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UIViewController {
+class ChatViewController: BaseViewController {
     
     private let db = Firestore.firestore()
     let userId = UserDefaults.standard.value(forKey: LoginViewController.userIdKey) as? String
@@ -87,7 +87,6 @@ class ChatViewController: UIViewController {
         setUpCollectionView()
         setUpInputView()
         constrainViews()
-        addTapGesture()
         observeNotifications()
         if let userName = UserDefaults.standard.value(forKey: LoginViewController.userName) as? String {
             print("userName is \(userName)")
@@ -219,15 +218,6 @@ class ChatViewController: UIViewController {
     @objc private func backButtonTapped() {
         print("back button pressed")
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    private func addTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func tapped() {
-        view.endEditing(true)
     }
     
     @objc private func keyboardShow(notification: NSNotification) {
