@@ -25,18 +25,14 @@ class ListingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "All Users"
-        
         getUsersList()
         setUpTableView()
         addActivityIndicator()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor.getColor(R: 38, G: 36, B: 49)
     }
     private func addActivityIndicator() {
         let activityIV = Utility.activityIndicatorView(self)
