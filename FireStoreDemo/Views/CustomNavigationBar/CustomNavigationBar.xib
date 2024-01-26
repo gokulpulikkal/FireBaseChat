@@ -27,7 +27,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="vHD-ij-GPP">
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="vHD-ij-GPP">
                     <rect key="frame" x="821" y="60" width="20" height="20"/>
                     <color key="tintColor" red="0.12981185319999999" green="0.2780358195" blue="0.83066958189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>

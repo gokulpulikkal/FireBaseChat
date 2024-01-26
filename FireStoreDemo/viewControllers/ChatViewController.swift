@@ -96,8 +96,6 @@ class ChatViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor.getColor(R: 38, G: 36, B: 49)
         navigationItem.title = name
         
         let customButton = UIButton(frame: .zero)
@@ -185,16 +183,13 @@ class ChatViewController: BaseViewController {
         chatCollectionView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 0).isActive = true
         inputContainerView.topAnchor.constraint(equalTo: chatCollectionView.bottomAnchor, constant: 20).isActive = true
         inputContainerView.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        inputContainerView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 10).isActive = true
+        inputContainerView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 15).isActive = true
         inputContainerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.75).isActive = true
-//        inputContainerView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -10).isActive = true
-        inputContainerView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -20).isActive = true
+        inputContainerView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor, constant: -40).isActive = true
         
         inputTextView.leadingAnchor.constraint(equalTo: inputContainerView.leadingAnchor, constant: 10).isActive = true
-        //inputTextView.topAnchor.constraint(equalTo: inputContainerView.topAnchor, constant: 5).isActive = true
         inputTextView.bottomAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: -10).isActive = true
         inputTextView.centerYToSuperview()
-//        inputTextView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
         inputTextView.trailingAnchor.constraint(equalTo: attachButton.leadingAnchor, constant: -8).isActive = true
         
         smileyButton.centerYToSuperview()
@@ -206,11 +201,8 @@ class ChatViewController: BaseViewController {
         attachButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         attachButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
-        
-//        sendButton.topAnchor.constraint(equalTo: inputContainerView.topAnchor, constant: 5).isActive = true
-        sendButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -25).isActive = true
+        sendButton.bottomAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: -3).isActive = true
         sendButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
-//        sendButton.centerYToSuperview()
         sendButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.23).isActive = true
         
     }

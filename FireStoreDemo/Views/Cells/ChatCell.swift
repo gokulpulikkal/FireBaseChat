@@ -26,7 +26,7 @@ class ChatCell: UICollectionViewCell {
     let bubbleBackgroundView: UIView = {
         let bbv = UIView(frame: .zero)
         bbv.translatesAutoresizingMaskIntoConstraints = false
-        bbv.layer.cornerRadius = 5
+        bbv.layer.cornerRadius = 12
         return bbv
     }()
     
