@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import PhotosUI
 
 protocol SignUpViewControllerDelegate: NSObjectProtocol {
     func signUpViewController(userCreated withId: String?, userName: String?)
@@ -16,6 +17,8 @@ protocol SignUpViewControllerDelegate: NSObjectProtocol {
 
 class SignUpViewController: BaseViewController {
     
+    @IBOutlet weak var imagePickerView: UIView!
+    @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var mailIdTextView: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -27,7 +30,18 @@ class SignUpViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "SignUp Page"
         initializeHideKeyboard()
+        adjustUIViews()
         
+        let imagePickerTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImagePickerView))
+        imagePickerView.addGestureRecognizer(imagePickerTapRecognizer)
+    }
+    
+    func adjustUIViews() {
+        view.backgroundColor = UIColor.getColor(R: 38, G: 36, B: 49)
+        
+        profilePhoto.layer.masksToBounds = false
+        profilePhoto.layer.cornerRadius = 40
+        profilePhoto.clipsToBounds = true
     }
     
     private func addUserToFireStoreDatabase(userId: String?, userName: String?) {
@@ -58,6 +72,10 @@ class SignUpViewController: BaseViewController {
         view.endEditing(true)
     }
     
+    @objc func didTapImagePickerView() {
+        showImagePickerOptions()
+    }
+    
     deinit {
         print("deinited signup controller")
     }
@@ -72,5 +90,33 @@ class SignUpViewController: BaseViewController {
                 }
             }
         }
+    }
+    
+    override func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        if let itemProvider = results.first?.itemProvider{
+          
+            if itemProvider.canLoadObject(ofClass: UIImage.self){
+                itemProvider.loadObject(ofClass: UIImage.self) { image , error  in
+                    if let error{
+                        print(error)
+                    }
+                    if let selectedImage = image as? UIImage{
+                        DispatchQueue.main.async {
+                            self.profilePhoto.image = selectedImage
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+extension SignUpViewController {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as! UIImage
+        self.profilePhoto.image = image
+        self.dismiss(animated: true)
     }
 }
