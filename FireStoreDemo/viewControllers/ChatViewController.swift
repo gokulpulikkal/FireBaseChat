@@ -209,7 +209,7 @@ class ChatViewController: BaseViewController {
     
     @objc private func backButtonTapped() {
         print("back button pressed")
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func keyboardShow(notification: NSNotification) {
