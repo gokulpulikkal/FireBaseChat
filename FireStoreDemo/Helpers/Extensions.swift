@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIColor {
     static func getColor(R: CGFloat, G: CGFloat, B: CGFloat) -> UIColor {
@@ -15,14 +16,6 @@ extension UIColor {
 }
 extension UIImageView{
   func imageFrom(url:URL){
-    DispatchQueue.global().async { [weak self] in
-      if let data = try? Data(contentsOf: url){
-        if let image = UIImage(data:data){
-          DispatchQueue.main.async{
-            self?.image = image
-          }
-        }
-      }
-    }
+      self.kf.setImage(with: url)
   }
 }
