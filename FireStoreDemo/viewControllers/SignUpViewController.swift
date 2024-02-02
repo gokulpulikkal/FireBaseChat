@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import PhotosUI
+import FirebaseStorage
 
 protocol SignUpViewControllerDelegate: NSObjectProtocol {
     func signUpViewController(userCreated withId: String?, userName: String?)
@@ -46,17 +47,31 @@ class SignUpViewController: BaseViewController {
     
     private func addUserToFireStoreDatabase(userId: String?, userName: String?) {
         guard let userId = userId else { return }
-        db.collection("users").document(userId).setData([
-            "name": userName as Any,
-            "userId": userId
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-                let userDefaults = UserDefaults.standard
-                userDefaults.set(userId, forKey: LoginViewController.userIdKey)
-                userDefaults.set(userName, forKey: LoginViewController.userName)
+        if let image = self.profilePhoto.image {
+            let imageRef = Storage.storage().reference().child("\(userId).jpg")
+            FirebaseStorageService.uploadImage(image, at: imageRef) { [weak self] (downloadURL) in
+                guard let self = self, let downloadURL = downloadURL else {
+                    return
+                }
+
+                let profileImageURL = downloadURL.absoluteString
+                self.db.collection("users").document(userId).setData([
+                    "name": userName as Any,
+                    "profileImage": profileImageURL,
+                    "userId": userId
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                        let userDefaults = UserDefaults.standard
+                        userDefaults.set(userId, forKey: LoginViewController.userIdKey)
+                        userDefaults.set(userName, forKey: LoginViewController.userName)
+                        self.dismiss(animated: true) {
+                            self.delegate?.signUpViewController(userCreated: userId, userName: userName)
+                        }
+                    }
+                }
             }
         }
     }
@@ -85,9 +100,6 @@ class SignUpViewController: BaseViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (userResult, error) in
             if error == nil {
                 self.addUserToFireStoreDatabase(userId: userResult?.user.uid, userName: self.userNameTextField.text)
-                self.dismiss(animated: true) {
-                    self.delegate?.signUpViewController(userCreated: userResult?.user.uid, userName: self.userNameTextField.text)
-                }
             }
         }
     }

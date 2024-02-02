@@ -39,6 +39,7 @@ class NewFriendTableViewCell: UITableViewCell {
         dpImageView.height(60)
         dpImageView.centerY(to: self)
         dpImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25).isActive = true
+        dpImageView.contentMode = .scaleAspectFill
         dpImageView.layer.masksToBounds = false
         dpImageView.layer.cornerRadius = 30
         dpImageView.clipsToBounds = true

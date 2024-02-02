@@ -178,6 +178,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.cellIdentifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell()}
         cell.nameLabel.text = tableViewDataList[indexPath.item].name
+        if let imageURL = tableViewDataList[indexPath.item].profileImage {
+            cell.dpImageView.imageFrom(url: URL(string: imageURL)!)
+        } else {
+            cell.dpImageView.image = UIImage(named: "test")
+        }
+        
         let bgColorView = UIView()
         bgColorView.backgroundColor = .clear
         cell.selectedBackgroundView = bgColorView
