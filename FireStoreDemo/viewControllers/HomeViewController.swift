@@ -23,6 +23,8 @@ class HomeViewController: BaseViewController {
         return view
     }()
     
+    var newMessageUpdateIndexSet = Set<Int>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -129,17 +131,14 @@ class HomeViewController: BaseViewController {
             self.tableViewDataList.append(contentsOf: oldList)
             let indexPaths = Array(0 ..< friends.count).map({ return IndexPath(item: $0, section: 0) })
             self.tableView.insertRows(at: indexPaths, with: .automatic)
-            self.makeNewMessageIndication(indexes: Array(0 ..< friends.count))
         }
     }
     
     private func makeNewMessageIndication(indexes: [Int]) {
-        let indexPaths = indexes.map({ return IndexPath(item: $0, section: 0) })
-        for indexPath in indexPaths {
-            if let cell = tableView.cellForRow(at: indexPath) as? HomeTableViewCell {
-                cell.newMessageView.isHidden = false
-            }
+        for index in indexes {
+            newMessageUpdateIndexSet.insert(index)
         }
+        tableView.reloadData()
     }
     
     private func presentLoginViewController() {
@@ -183,7 +182,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.dpImageView.image = UIImage(named: "test")
         }
-        
+        cell.newMessageView.isHidden = !newMessageUpdateIndexSet.contains(indexPath.item)
         let bgColorView = UIView()
         bgColorView.backgroundColor = .clear
         cell.selectedBackgroundView = bgColorView
@@ -192,8 +191,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.item
-        guard index < tableViewDataList.count, let cell = tableView.cellForRow(at: indexPath) as? HomeTableViewCell else { return }
-        cell.newMessageView.isHidden = true
+        newMessageUpdateIndexSet.remove(indexPath.item)
         let friend = tableViewDataList[index]
         self.openChatViewController(friend: friend)
     }

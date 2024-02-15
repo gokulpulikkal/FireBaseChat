@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0CD1FC2B7D39EF00F6D441 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B0CD1FB2B7D39EF00F6D441 /* GoogleService-Info.plist */; };
 		4BBE02D52B58F3CD00C2E5C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */; };
 		4BC666AF2B5B7C5900C5E619 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */; };
 		4BC666B12B6CA74100C5E619 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC666B02B6CA74100C5E619 /* FirebaseStorageService.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B0CD1FB2B7D39EF00F6D441 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4BC666B02B6CA74100C5E619 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 			children = (
 				55433304249AA15300D101CA /* Views */,
 				55433301249A942300D101CA /* Helpers */,
-				554332FE249A84F100D101CA /* Modals */,
+				554332FE249A84F100D101CA /* Models */,
 				556E58C8247D5D5100246DDE /* UserData */,
 				5522B9932471477D00D4A354 /* viewControllers */,
 				5522B9752471301B00D4A354 /* AppDelegate.swift */,
@@ -169,6 +171,7 @@
 				5522B9802471301E00D4A354 /* LaunchScreen.storyboard */,
 				5522B9832471301E00D4A354 /* Info.plist */,
 				4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */,
+				4B0CD1FB2B7D39EF00F6D441 /* GoogleService-Info.plist */,
 				556BB27B24A8AE5100B26325 /* FireStoreDemo.xcdatamodeld */,
 			);
 			path = FireStoreDemo;
@@ -189,13 +192,13 @@
 			path = viewControllers;
 			sourceTree = "<group>";
 		};
-		554332FE249A84F100D101CA /* Modals */ = {
+		554332FE249A84F100D101CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				554332FF249A850800D101CA /* HomeViewModel.swift */,
 				55E271B724E437E100AC9E9E /* BaseChatModel.swift */,
 			);
-			path = Modals;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		55433301249A942300D101CA /* Helpers */ = {
@@ -347,6 +350,7 @@
 				5522B97F2471301E00D4A354 /* Assets.xcassets in Resources */,
 				5522B99224713F6700D4A354 /* SignUpViewController.xib in Resources */,
 				4BBE02D52B58F3CD00C2E5C5 /* GoogleService-Info.plist in Resources */,
+				4B0CD1FC2B7D39EF00F6D441 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
