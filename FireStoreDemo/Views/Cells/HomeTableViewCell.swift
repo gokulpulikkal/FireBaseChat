@@ -64,8 +64,8 @@ class HomeTableViewCell: UITableViewCell {
         label.textColor = .black
         label.centerInSuperview()
         addSubview(newMessageView)
-        newMessageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
-        newMessageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10).isActive = true
+        newMessageView.centerYToSuperview()
+        newMessageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         
         let stackView = UIStackView(arrangedSubviews: [nameLabel, recentMessage])
         stackView.axis = .vertical
