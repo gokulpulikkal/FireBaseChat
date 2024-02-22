@@ -8,10 +8,16 @@
 
 import UIKit
 import PhotosUI
+import CryptoKit
 
 class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
-    
 
+    static let userIdKey = "userId"
+    static let userName = "userName"
+    static let privateKey = "privateKey"
+    static let publicKey = "publicKey"
+    static let profileImageURL = "profileImageURL"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -62,6 +68,14 @@ class BaseViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         
+    }
+    
+    // Encryption
+    func getEncryptionKeys() -> (publicKey: P384.KeyAgreement.PublicKey, privateKey: P384.KeyAgreement.PrivateKey ) {
+        // The private and public encryption key of the receiver
+        let recipientPrivateKey = P384.KeyAgreement.PrivateKey()
+        let recipientPublicKey = recipientPrivateKey.publicKey
+        return (recipientPublicKey, recipientPrivateKey)
     }
 
 }

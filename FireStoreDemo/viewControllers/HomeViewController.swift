@@ -23,6 +23,12 @@ class HomeViewController: BaseViewController {
         return view
     }()
     
+    var labelView: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var newMessageUpdateIndexSet = Set<Int>()
     
     override func viewDidLoad() {
@@ -31,6 +37,7 @@ class HomeViewController: BaseViewController {
         setUpTableView()
         listenToViewModel()
         addFloatingButton()
+        setUserNameOnTop()
         activityIndicator = Utility.activityIndicatorView(self)
         
     }
@@ -41,12 +48,21 @@ class HomeViewController: BaseViewController {
     }
 
     private func getFriendsList() {
-        if let userId = UserDefaults.standard.value(forKey: LoginViewController.userIdKey) as? String {
+        if let userId = UserDefaults.standard.value(forKey: BaseViewController.userIdKey) as? String {
             viewModal.getFriendsList(userId: userId)
         } else {
             presentLoginViewController()
         }
     }
+    
+    private func setUserNameOnTop() {
+        if let userName = UserDefaults.standard.value(forKey: BaseViewController.userName) as? String {
+            self.view.addSubview(labelView)
+            labelView.text = userName
+            labelView.centerInSuperview()
+        }
+    }
+    
     private func setUpNavigationBar() {
         self.view.addSubview(navigationView)
         navigationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
@@ -157,6 +173,7 @@ class HomeViewController: BaseViewController {
         let chatVC = ChatViewController()
         chatVC.chatThreadId = friend.chatThreadId
         chatVC.friendId = friend.userId
+        chatVC.publicKey = friend.publicKey
         chatVC.name = friend.name
         self.navigationController?.pushViewController(chatVC, animated: true)
         

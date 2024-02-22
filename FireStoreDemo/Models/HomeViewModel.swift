@@ -31,7 +31,7 @@ class HomeViewModel {
                 var friendsList: [Friend] = []
                 for document in documents {
                     let dictionary = document.data()
-                    friendsList.append(Friend(userId: dictionary["userId"] as? String, name: dictionary["name"] as? String, profileImage: dictionary["profileImage"] as? String, chatThreadId: dictionary["chatThreadId"] as? String))
+                    friendsList.append(Friend(userId: dictionary["userId"] as? String, name: dictionary["name"] as? String, profileImage: dictionary["profileImage"] as? String, chatThreadId: dictionary["chatThreadId"] as? String, publicKey: dictionary["publicKey"] as? Data))
                 }
                 self.friendsList.value = friendsList
                 self.listenToFriendsCollection(userId: userId)
@@ -58,7 +58,7 @@ class HomeViewModel {
                 } else if diff.type == .added {
                     print("testing chat is added")
                     if let userId = documentData["userId"] as? String, !(self.friendsList.value?.contains(where: { $0.userId == userId }) ?? false) {
-                        newFriends.append(Friend(userId: userId, name: documentData["name"] as? String, profileImage: documentData["profileImage"] as? String, chatThreadId: documentData["chatThreadId"] as? String))
+                        newFriends.append(Friend(userId: userId, name: documentData["name"] as? String, profileImage: documentData["profileImage"] as? String, chatThreadId: documentData["chatThreadId"] as? String, publicKey: documentData["publicKey"] as? Data))
                     }
                 }
             }
@@ -73,4 +73,5 @@ struct Friend: Codable {
     var name: String?
     var profileImage: String?
     var chatThreadId: String?
+    var publicKey: Data?
 }

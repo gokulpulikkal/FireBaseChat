@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B0CD1FC2B7D39EF00F6D441 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B0CD1FB2B7D39EF00F6D441 /* GoogleService-Info.plist */; };
+		4B0CD1FE2B7F43DF00F6D441 /* EncryptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0CD1FD2B7F43DF00F6D441 /* EncryptionHelper.swift */; };
 		4BBE02D52B58F3CD00C2E5C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */; };
 		4BC666AF2B5B7C5900C5E619 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */; };
 		4BC666B12B6CA74100C5E619 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC666B02B6CA74100C5E619 /* FirebaseStorageService.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		4B0CD1FB2B7D39EF00F6D441 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4B0CD1FD2B7F43DF00F6D441 /* EncryptionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionHelper.swift; sourceTree = "<group>"; };
 		4BBE02D42B58F3CD00C2E5C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4BC666AE2B5B7C5900C5E619 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4BC666B02B6CA74100C5E619 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				5529C7BD24D5BD530068ACBE /* Extensions.swift */,
 				55A89E6224DB1C38008C05A0 /* Utility.swift */,
 				4BC666B02B6CA74100C5E619 /* FirebaseStorageService.swift */,
+				4B0CD1FD2B7F43DF00F6D441 /* EncryptionHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				5573ECEC2586751900EC074E /* CustomNavigationBar.swift in Sources */,
 				4BC666AF2B5B7C5900C5E619 /* BaseViewController.swift in Sources */,
 				556E58C7247D5CD400246DDE /* HomeViewController.swift in Sources */,
+				4B0CD1FE2B7F43DF00F6D441 /* EncryptionHelper.swift in Sources */,
 				55E271B824E437E100AC9E9E /* BaseChatModel.swift in Sources */,
 				556BB27D24A8AE5100B26325 /* FireStoreDemo.xcdatamodeld in Sources */,
 				55433300249A850800D101CA /* HomeViewModel.swift in Sources */,
@@ -521,6 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HS7B23PJ7S;
 				INFOPLIST_FILE = FireStoreDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,6 +544,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HS7B23PJ7S;
 				INFOPLIST_FILE = FireStoreDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

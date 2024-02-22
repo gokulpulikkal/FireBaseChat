@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import PhotosUI
 import FirebaseStorage
+import CryptoKit
 
 protocol SignUpViewControllerDelegate: NSObjectProtocol {
     func signUpViewController(userCreated withId: String?, userName: String?)
@@ -45,28 +46,36 @@ class SignUpViewController: BaseViewController {
         profilePhoto.clipsToBounds = true
     }
     
+    
+    
     private func addUserToFireStoreDatabase(userId: String?, userName: String?) {
         guard let userId = userId else { return }
+        
+        
         if let image = self.profilePhoto.image {
             let imageRef = Storage.storage().reference().child("\(userId).jpg")
             FirebaseStorageService.uploadImage(image, at: imageRef) { [weak self] (downloadURL) in
                 guard let self = self, let downloadURL = downloadURL else {
                     return
                 }
-
+                let (publicKey, privateKey) = self.getEncryptionKeys()
                 let profileImageURL = downloadURL.absoluteString
                 self.db.collection("users").document(userId).setData([
                     "name": userName as Any,
                     "profileImage": profileImageURL,
-                    "userId": userId
+                    "userId": userId,
+                    "publicKey": publicKey.rawRepresentation
                 ]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written!")
                         let userDefaults = UserDefaults.standard
-                        userDefaults.set(userId, forKey: LoginViewController.userIdKey)
-                        userDefaults.set(userName, forKey: LoginViewController.userName)
+                        userDefaults.set(userId, forKey: BaseViewController.userIdKey)
+                        userDefaults.set(userName, forKey: BaseViewController.userName)
+                        userDefaults.set(privateKey.rawRepresentation, forKey: BaseViewController.privateKey)
+                        userDefaults.set(publicKey.rawRepresentation, forKey: BaseViewController.publicKey)
+                        userDefaults.set(profileImageURL, forKey: BaseViewController.profileImageURL)
                         self.dismiss(animated: true) {
                             self.delegate?.signUpViewController(userCreated: userId, userName: userName)
                         }

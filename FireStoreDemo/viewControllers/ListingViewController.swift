@@ -40,7 +40,7 @@ class ListingViewController: BaseViewController {
     }
     
     private func getUsersList() {
-        guard let userId = UserDefaults.standard.value(forKey: LoginViewController.userIdKey) as? String else { return }
+        guard let userId = UserDefaults.standard.value(forKey: BaseViewController.userIdKey) as? String else { return }
         let reference = db.collection("users")
         reference.getDocuments { (response, error) in
             if let documents = response?.documents, error == nil {
@@ -48,7 +48,7 @@ class ListingViewController: BaseViewController {
                 for document in documents {
                     let dictionary = document.data()
                     if (dictionary["userId"] as? String) != userId {
-                        friendsList.append(Friend(userId: dictionary["userId"] as? String, name: dictionary["name"] as? String, profileImage: dictionary["profileImage"] as? String))
+                        friendsList.append(Friend(userId: dictionary["userId"] as? String, name: dictionary["name"] as? String, profileImage: dictionary["profileImage"] as? String, publicKey: dictionary["publicKey"] as? Data))
                     }
                 }
                 self.friendsList = friendsList
@@ -72,10 +72,11 @@ class ListingViewController: BaseViewController {
         tableView.register(NewFriendTableViewCell.self, forCellReuseIdentifier: NewFriendTableViewCell.cellIdentifier)
     }
     
-    private func openChatViewController(threadDocumentId: String, friendId: String) {
+    private func openChatViewController(threadDocumentId: String, friendId: String, publicKey: Data) {
         let chatVC = ChatViewController()
         chatVC.chatThreadId = threadDocumentId
         chatVC.friendId = friendId
+        chatVC.publicKey = publicKey
         self.navigationController?.pushViewController(chatVC, animated: true)
         
     }
@@ -101,25 +102,26 @@ extension ListingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.item
         
-        guard index < friendsList.count, let userId = UserDefaults.standard.value(forKey: LoginViewController.userIdKey) as? String, let userName = UserDefaults.standard.value(forKey: LoginViewController.userName) as? String else { return }
+        guard index < friendsList.count, let userId = UserDefaults.standard.value(forKey: BaseViewController.userIdKey) as? String, let userName = UserDefaults.standard.value(forKey: BaseViewController.userName) as? String else { return }
         
         let senderReference = db.collection("users").document(userId).collection("friends").document(friendsList[index].userId ?? "")
         let receiverReference = db.collection("users").document(friendsList[index].userId ?? "").collection("friends").document(userId)
         let chatThreadId: String = String((userId + (self.friendsList[index].userId ?? "")).sorted())
         
         
-        makeFriendDocument(documentReference: senderReference, name: friendsList[index].name ?? "", userId: friendsList[index].userId ?? "", chatThreadId: chatThreadId, imageURL: friendsList[index].profileImage) //Making friend document in own friends collection
-        makeFriendDocument(documentReference: receiverReference, name: userName, userId: userId, chatThreadId: chatThreadId, imageURL: friendsList[index].profileImage) //Making friend document in receiver friends collection
+        makeFriendDocument(documentReference: senderReference, name: friendsList[index].name ?? "", userId: friendsList[index].userId ?? "", chatThreadId: chatThreadId, imageURL: friendsList[index].profileImage, publicKey: friendsList[index].publicKey) //Making friend document in own friends collection
+        makeFriendDocument(documentReference: receiverReference, name: userName, userId: userId, chatThreadId: chatThreadId, imageURL: UserDefaults.standard.value(forKey: BaseViewController.profileImageURL) as? String, publicKey: UserDefaults.standard.value(forKey: BaseViewController.publicKey) as? Data) //Making friend document in receiver friends collection
         
-        self.openChatViewController(threadDocumentId: chatThreadId, friendId: self.friendsList[index].userId ?? "")
+        self.openChatViewController(threadDocumentId: chatThreadId, friendId: self.friendsList[index].userId ?? "", publicKey: self.friendsList[index].publicKey ?? Data())
     }
     
-    private func makeFriendDocument(documentReference: DocumentReference, name: String, userId: String, chatThreadId: String, imageURL: String?) {
+    private func makeFriendDocument(documentReference: DocumentReference, name: String, userId: String, chatThreadId: String, imageURL: String?, publicKey: Data?) {
         documentReference.setData([
             "name": name,
             "userId": userId,
             "profileImage": imageURL,
-            "chatThreadId": chatThreadId
+            "chatThreadId": chatThreadId,
+            "publicKey": publicKey
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")

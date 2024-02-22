@@ -15,8 +15,6 @@ protocol LoginViewControllerDelegate: NSObjectProtocol {
 
 class LoginViewController: BaseViewController {
 
-    static let userIdKey = "userId"
-    static let userName = "userName"
     private let db = Firestore.firestore()
     private var reference: CollectionReference?
     var databaseListener: ListenerRegistration?
@@ -99,8 +97,8 @@ class LoginViewController: BaseViewController {
     
     private func saveUserAndDismissViewController(userId: String?, userName: String?) {
         let userDefaults = UserDefaults.standard
-        userDefaults.set(userId, forKey: LoginViewController.userIdKey)
-        userDefaults.set(userName, forKey: LoginViewController.userName)
+        userDefaults.set(userId, forKey: BaseViewController.userIdKey)
+        userDefaults.set(userName, forKey: BaseViewController.userName)
         delegate?.LoginViewControllerUserLoginSuccess()
         self.dismiss(animated: true, completion: nil)
     }

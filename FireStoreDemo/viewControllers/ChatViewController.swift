@@ -12,8 +12,9 @@ import Firebase
 class ChatViewController: BaseViewController {
     
     private let db = Firestore.firestore()
-    let userId = UserDefaults.standard.value(forKey: LoginViewController.userIdKey) as? String
+    let userId = UserDefaults.standard.value(forKey: BaseViewController.userIdKey) as? String
     var friendId: String?
+    var publicKey: Data?
     var name: String?
     var chatThreadId: String? {
         didSet {
@@ -88,7 +89,7 @@ class ChatViewController: BaseViewController {
         setUpInputView()
         constrainViews()
         observeNotifications()
-        if let userName = UserDefaults.standard.value(forKey: LoginViewController.userName) as? String {
+        if let userName = UserDefaults.standard.value(forKey: BaseViewController.userName) as? String {
             print("userName is \(userName)")
         }
     }
@@ -138,7 +139,16 @@ class ChatViewController: BaseViewController {
             var messageList: [BaseChatModel] = []
             for document in documentSnapshots.documents {
                 let dictionary = document.data()
-                messageList.append(BaseChatModel(date: dictionary["date"] as? Timestamp ?? Timestamp(date: Date()), id: dictionary["id"] as? String ?? "", message: dictionary["message"] as? String ?? ""))
+                let senderId = dictionary["id"] as? String ?? ""
+                var messageText: String = ""
+                let isOwnMessage = senderId == UserDefaults.standard.value(forKey: BaseViewController.userIdKey) as? String
+                // If it's own message then retrieve from CoreData
+                if let message = dictionary["message"] as? String {
+                    messageText = message
+                } else if let message = EncryptionHelper.shared.decryptData(cipherText: dictionary["cipherText"] as? Data, encapsulatedKey: dictionary["encapsulatedKey"] as? Data) {
+                    messageText = message
+                }
+                messageList.append(BaseChatModel(date: dictionary["date"] as? Timestamp ?? Timestamp(date: Date()), id: senderId, message: messageText))
             }
             guard messageList.count > 0 else { return }
             self.dataList = messageList.sorted(by: { $0.date.dateValue() < $1.date.dateValue() })
@@ -232,12 +242,14 @@ class ChatViewController: BaseViewController {
         let friendDocument = db.collection("users").document(friendId!).collection("friends").document(userId!)
         
         friendDocument.setData([ "latestTime": Timestamp(date: Date()) ], merge: true)
-        
-        let chat = BaseChatModel(date: Timestamp(date: Date()), id: userId!, message: text)
+        let encryptedMessageDetails = EncryptionHelper.shared.encryptData(message: text ?? "", recipientPublicKey: publicKey)
+
         inputTextView.text = ""
+        // save this message data into core data as encrypted. So that on getting updated from Firebase this user can view this message
         let docData: [String: Any] = [
-            "id": chat.senderId as Any,
-            "message": chat.message,
+            "id": userId,
+            "cipherText": encryptedMessageDetails.cipherText,
+            "encapsulatedKey": encryptedMessageDetails.encapsulatedKey,
             "date": Timestamp(date: Date())
         ]
         reference.addDocument(data: docData) { err in
@@ -257,7 +269,7 @@ class ChatViewController: BaseViewController {
     }
     
     private func setUpChatCell(chatModel: BaseChatModel, cell: ChatCell) {
-        if chatModel.senderId == UserDefaults.standard.value(forKey: LoginViewController.userIdKey) as? String {
+        if chatModel.senderId == UserDefaults.standard.value(forKey: BaseViewController.userIdKey) as? String {
             cell.bubbleBackgroundView.backgroundColor = UIColor.getColor(R: 40, G: 89, B: 251)
             cell.textLabel.textColor = .white
             cell.textViewLeadingAnchor?.isActive = true
