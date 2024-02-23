@@ -1,7 +1,7 @@
 # Private Community Messenger
 
 ## Overview
-Private Community Messenger is a cutting-edge messenger app crafted exclusively for real-time communication within communities. Designed with a focus on creating a secure and intimate digital space, our app is tailored for groups of friends seeking a seamless and personalized messaging experience.
+Private Community Messenger is a cutting-edge messenger app crafted exclusively for real-time communication within communities with end-to-end encryption. Designed to create a secure and intimate digital space, this app is tailored for groups of friends seeking a seamless and personalized messaging experience.
 
 ## Project Status
 This project is currently under active development, and certain features may be incomplete or subject to changes.
@@ -9,7 +9,7 @@ This project is currently under active development, and certain features may be 
 ## Features
 
 - **Real-Time Messaging:** Instant messaging within a community of friends.
-- **Security:** Fostering a secure and private digital space.
+- **Security:** Fostering a secure and private digital space with end-to-end encryption.
 - **No Third-Party Modules:** Developed without relying on external modules for a seamless and personalized user experience.
 - **Powered by Firebase:** Utilizes Firebase for backend services.
 
@@ -17,6 +17,7 @@ This project is currently under active development, and certain features may be 
 
 - **Swift:** Primary programming language.
 - **Firebase:** Backend services.
+- **CryptoKit:** Used to implement Encyprtion
 
 ## Installation
 - Visit the Google Firebase Console.
