@@ -1,7 +1,7 @@
-# Private Community Messenger
+# Private Messenger
 
 ## Overview
-Private Community Messenger is a cutting-edge messenger app crafted exclusively for real-time communication within communities with end-to-end encryption. Designed to create a secure and intimate digital space, this app is tailored for groups of friends seeking a seamless and personalized messaging experience.
+Private Messenger is a cutting-edge messenger app crafted exclusively for real-time communication with end-to-end encryption. Designed to create a secure and intimate digital space, this app is tailored for groups of friends seeking a seamless and personalized messaging experience.
 
 ## Project Status
 This project is currently under active development, and certain features may be incomplete or subject to changes.
